@@ -12,10 +12,7 @@
 
 SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-
-function log () {
-    echo "$1" >> /tmp/kpod.log
-}
+source "$SCRIPT_PATH/utils.sh"
 
 NAMESPACE_KEYWORD=""
 POD=""

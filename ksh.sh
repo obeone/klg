@@ -2,9 +2,7 @@
 #
 SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-function log () {
-    echo "$1" >> /tmp/ksh.log
-}
+source "$SCRIPT_PATH/utils.sh"
 
 while getopts "n:p:c:N:P:C:h" ßopt; do
     case "${opt}" in
