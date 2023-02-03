@@ -4,7 +4,7 @@ SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 source "$SCRIPT_PATH/utils.sh"
 
-while getopts "n:p:c:N:P:C:h" ßopt; do
+while getopts "n:p:c:N:P:C:h" opt; do
     case "${opt}" in
         n)
             NAMESPACE_KEYWORD=$OPTARG
@@ -24,8 +24,8 @@ while getopts "n:p:c:N:P:C:h" ßopt; do
         C)
             CONTAINER=$OPTARG
             ;;
-        h)
-            cat ./help.txt
+        *)
+            cat "$SCRIPT_PATH/help.txt"
             exit
             ;;
     esac
