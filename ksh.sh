@@ -1,10 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
+SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
 function log () {
     echo "$1" >> /tmp/ksh.log
 }
 
-while getopts "n:p:c:N:P:C:h" opt; do
+while getopts "n:p:c:N:P:C:h" ßopt; do
     case "${opt}" in
         n)
             NAMESPACE_KEYWORD=$OPTARG
@@ -33,7 +35,7 @@ done
 
 if [[ -z "$NAMESPACE" ]]
 then
-    NAMESPACE=$(./kns.sh $NAMESPACE_KEYWORD)
+    NAMESPACE=$(./kns.sh "$NAMESPACE_KEYWORD")
 fi
 
 if [[ $? -ne 0 ]]
@@ -46,7 +48,7 @@ log "Found namespace: $NAMESPACE"
 
 if [[ -z "$POD" ]]
 then
-    POD=$(./kpod.sh -N $NAMESPACE $POD_KEYWORD)
+    POD=$(./kpod.sh -N "$NAMESPACE" "$POD_KEYWORD")
 fi
 
 if [[ $? -ne 0 ]]
@@ -59,7 +61,7 @@ log "Found pod: $POD"
 
 if [[ -z "$CONTAINER" ]]
 then
-    CONTAINER=$(./kctn.sh -N $NAMESPACE -P $POD $CONTAINER_KEYWORD)
+    CONTAINER=$(./kctn.sh -N "$NAMESPACE" -P "$POD" "$CONTAINER_KEYWORD")
 fi
 
 if [[ $? -ne 0 ]]
@@ -70,4 +72,4 @@ fi
 
 log "Found container: $CONTAINER"
 
-kubectl exec -it pods/$POD -n $NAMESPACE -c $CONTAINER -- /bin/sh
+kubectl exec -it pods/"$POD" -n "$NAMESPACE" -c "$CONTAINER" -- /bin/sh
