@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Fuzzy search for k8s namespace
 # If argument is not provided, use K8S_DEFAULT_NS or interactively fuzzy search
 if [ -z "$1" ]
@@ -14,4 +14,3 @@ else
     NAMESPACES=($FOUND_NAMESPACES)
     echo ${NAMESPACES[0]}
 fi
-

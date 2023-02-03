@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 function log () {
     echo "$1" >> /tmp/klg.log
@@ -87,4 +87,3 @@ kill -s INT $PID
 
 log "Removing temporary log file $LOG_FILE"
 rm $LOG_FILE
-

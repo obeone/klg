@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 
 IS_NAMESPACED_IDENTIFIED=false
