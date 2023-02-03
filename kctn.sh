@@ -2,9 +2,7 @@
 #
 SCRIPT_PATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-IS_NAMESPACED_IDENTIFIED=false
 NAMESPACE=""
-IS_POD_IDENTIFIED=false
 POD=""
 
 while getopts "N:n:P:p:" opt; do
