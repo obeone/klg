@@ -33,7 +33,7 @@ done
 
 if [[ -z "$NAMESPACE" ]]
 then
-    NAMESPACE=$(./kns.sh "$NAMESPACE_KEYWORD")
+    NAMESPACE=$("$SCRIPT_PATH/kns.sh" "$NAMESPACE_KEYWORD")
 fi
 
 if [[ $? -ne 0 ]]
@@ -46,7 +46,7 @@ log "Found namespace: $NAMESPACE"
 
 if [[ -z "$POD" ]]
 then
-    POD=$(./kpod.sh -N "$NAMESPACE" "$POD_KEYWORD")
+    POD=$("$SCRIPT_PATH/kpod.sh" -N "$NAMESPACE" "$POD_KEYWORD")
 fi
 
 if [[ $? -ne 0 ]]
@@ -59,7 +59,7 @@ log "Found pod: $POD"
 
 if [[ -z "$CONTAINER" ]]
 then
-    CONTAINER=$(./kctn.sh -N "$NAMESPACE" -P "$POD" "$CONTAINER_KEYWORD")
+    CONTAINER=$("$SCRIPT_PATH/kctn.sh" -N "$NAMESPACE" -P "$POD" "$CONTAINER_KEYWORD")
 fi
 
 if [[ $? -ne 0 ]]
